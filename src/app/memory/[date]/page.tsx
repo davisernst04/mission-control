@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
+import ReactMarkdown from 'react-markdown';
 
 interface MemoryEntry {
   date: string;
@@ -85,9 +86,7 @@ export default function MemoryEntryPage() {
 
       <div className="p-6 rounded-xl bg-gray-900 border border-gray-800">
         <div className="prose prose-invert max-w-none">
-          <pre className="whitespace-pre-wrap text-sm text-gray-300 font-sans bg-transparent border-0 p-0">
-            {memory.content}
-          </pre>
+          <ReactMarkdown>{memory.content}</ReactMarkdown>
         </div>
       </div>
     </div>

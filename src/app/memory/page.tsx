@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import ReactMarkdown from 'react-markdown';
 
 interface DailyMemory {
   date: string;
@@ -123,9 +124,9 @@ export default function MemoryPage() {
                   onClick={() => router.push(`/memory/${memory.date}`)}
                 >
                   <p className="text-xs text-emerald-500 font-medium mb-2">{memory.date}</p>
-                  <p className="text-sm text-gray-300 whitespace-pre-wrap line-clamp-6">
-                    {memory.content}
-                  </p>
+                  <div className="text-sm text-gray-300 prose prose-invert prose-sm max-w-none line-clamp-6">
+                    <ReactMarkdown>{memory.content}</ReactMarkdown>
+                  </div>
                 </div>
               ))}
             </div>
@@ -139,9 +140,9 @@ export default function MemoryPage() {
             <p className="text-gray-500">No long-term memory found.</p>
           ) : (
             <div className="max-h-[60vh] overflow-auto pr-2">
-              <p className="text-sm text-gray-300 whitespace-pre-wrap">
-                {longTermMemory}
-              </p>
+              <div className="text-sm text-gray-300 prose prose-invert prose-sm max-w-none">
+                <ReactMarkdown>{longTermMemory}</ReactMarkdown>
+              </div>
             </div>
           )}
         </div>
