@@ -154,7 +154,7 @@ export default function AgentsPage() {
               </div>
             </div>
             <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-sm font-medium ${getStatusBg(agent.status)}`}>
-              <div className={`w-2 h-2 rounded-full ${getStatusColor(agent.status)} ${agent.status === 'running' || agent.status === 'active' ? 'animate-pulse' : ''}`} />
+              <div className={`w-2 h-2 rounded-full ${getStatusColor(agent.status)} ${agent.status === 'active' ? 'animate-pulse' : ''}`} />
               {agent.status.charAt(0).toUpperCase() + agent.status.slice(1)}
             </div>
           </div>
