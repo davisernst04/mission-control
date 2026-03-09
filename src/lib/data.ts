@@ -104,6 +104,52 @@ export async function getAgents(): Promise<Agent[]> {
   return agents;
 }
 
+export interface CurrentAgent {
+  id: string;
+  name: string;
+  identityEmoji: string;
+  status: 'active' | 'busy' | 'idle';
+  model: string;
+  lastActive: number;
+}
+
+export async function getCurrentAgent(): Promise<CurrentAgent | null> {
+  const result = await openClawAction('agent');
+  
+  if (!result.success || !result.data) {
+    return null;
+  }
+  
+  return {
+    id: result.data.id,
+    name: result.data.identityName,
+    identityEmoji: result.data.identityEmoji,
+    status: result.data.status,
+    model: result.data.model,
+    lastActive: result.data.lastActive,
+  };
+}
+
+export interface SubAgent {
+  id: string;
+  key: string;
+  status: 'running' | 'completed' | 'failed';
+  model: string;
+  lastActive: number;
+  ageMs: number;
+  totalTokens: number | null;
+}
+
+export async function getSubAgents(): Promise<SubAgent[]> {
+  const result = await openClawAction('subagents');
+  
+  if (!result.success || !result.data) {
+    return [];
+  }
+  
+  return result.data;
+}
+
 export interface Task {
   id: string | number;
   title: string;
