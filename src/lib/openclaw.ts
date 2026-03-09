@@ -1,20 +1,11 @@
-"use server";
-
 import { piClient } from './api';
 
-/**
- * OpenClaw action dispatcher.
- * Uses HTTP client (piClient) to communicate with the Pi API.
- */
-export async function openClawAction(path: string, payload: any = {}, method: string = "GET") {
-  // Normalize the path by removing /api/ if present
-  const cleanPath = path.replace(/^\/?api\//, '');
-  
+export async function openClawAction(action: string, payload: any = {}) {
   try {
-    const data = await piClient.request(cleanPath, payload, method);
+    const data = await piClient.request(action, payload);
     return { success: true, data };
   } catch (error: any) {
-    console.error(`HTTP API error [${method} /api/${cleanPath}]:`, error.message);
+    console.error(`HTTP API error [${action}]:`, error.message);
     return { success: false, error: error.message };
   }
 }

@@ -3,6 +3,7 @@
  */
 class PiApiClient {
   private baseUrl: string;
+  private timeout = 10000; // 10 second timeout
 
   constructor() {
     this.baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002';
@@ -19,6 +20,7 @@ class PiApiClient {
       headers: {
         'Content-Type': 'application/json',
       },
+      signal: AbortSignal.timeout(this.timeout),
     };
 
     if (method !== 'GET' && method !== 'HEAD') {
