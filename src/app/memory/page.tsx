@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface DailyMemory {
   date: string;
@@ -13,6 +14,7 @@ interface SearchResult {
 }
 
 export default function MemoryPage() {
+  const router = useRouter();
   const [dailyMemories, setDailyMemories] = useState<DailyMemory[]>([]);
   const [longTermMemory, setLongTermMemory] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -115,7 +117,11 @@ export default function MemoryPage() {
           ) : (
             <div className="space-y-4 max-h-[60vh] overflow-auto pr-2">
               {dailyMemories.map((memory) => (
-                <div key={memory.date} className="p-4 rounded-lg bg-gray-950/50 border border-gray-800">
+                <div 
+                  key={memory.date} 
+                  className="p-4 rounded-lg bg-gray-950/50 border border-gray-800 hover:border-emerald-500 cursor-pointer transition-colors"
+                  onClick={() => router.push(`/memory/${memory.date}`)}
+                >
                   <p className="text-xs text-emerald-500 font-medium mb-2">{memory.date}</p>
                   <p className="text-sm text-gray-300 whitespace-pre-wrap line-clamp-6">
                     {memory.content}
