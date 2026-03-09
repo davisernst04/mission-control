@@ -2,11 +2,25 @@ import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
 
-const MEMORY_DIR = '/home/davis/.openclaw/workspace/memory';
+const MEMORY_DIR = process.env.MEMORY_DIR || '/home/davis/.openclaw/workspace/memory';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const action = searchParams.get('action');
+  
+  // Check if memory directory exists
+  let dirExists = false;
+  try {
+    await fs.access(MEMORY_DIR);
+    dirExists = true;
+  } catch {
+    dirExists = false;
+  }
+  
+  // If directory doesn't exist, return empty data gracefully
+  if (!dirExists) {
+    return NextResponse.json([]);
+  }
   
   try {
     switch (action) {
