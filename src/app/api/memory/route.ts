@@ -1,82 +1,48 @@
 import { NextResponse } from 'next/server';
-import { promises as fs } from 'fs';
-import path from 'path';
 
-const MEMORY_DIR = process.env.MEMORY_DIR || '/home/davis/.openclaw/workspace/memory';
+// Pi's API URL - configured via environment
+const PI_API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://100.97.211.24:3002';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const action = searchParams.get('action');
   
-  // Check if memory directory exists
-  let dirExists = false;
   try {
-    await fs.access(MEMORY_DIR);
-    dirExists = true;
-  } catch {
-    dirExists = false;
-  }
-  
-  // If directory doesn't exist, return empty data gracefully
-  if (!dirExists) {
-    return NextResponse.json([]);
-  }
-  
-  try {
+    let piUrl = '';
+    
     switch (action) {
-      case 'daily': {
-        const files = await fs.readdir(MEMORY_DIR);
-        const dailyFiles = files
-          .filter(f => /^\d{4}-\d{2}-\d{2}\.md$/.test(f))
-          .sort()
-          .reverse()
-          .slice(0, 7);
-        
-        const memories = await Promise.all(
-          dailyFiles.map(async (file) => {
-            const date = file.replace('.md', '');
-            const content = await fs.readFile(path.join(MEMORY_DIR, file), 'utf-8');
-            return { date, content };
-          })
-        );
-        
-        return NextResponse.json(memories);
-      }
-      
-      case 'longterm': {
-        try {
-          const content = await fs.readFile(path.join(MEMORY_DIR, 'MEMORY.md'), 'utf-8');
-          return NextResponse.json({ content });
-        } catch {
-          return NextResponse.json({ content: null });
-        }
-      }
-      
-      case 'search': {
+      case 'daily':
+        piUrl = `${PI_API_URL}/api/memory/daily`;
+        break;
+      case 'longterm':
+        piUrl = `${PI_API_URL}/api/memory`;
+        break;
+      case 'search':
         const query = searchParams.get('query') || '';
-        const files = await fs.readdir(MEMORY_DIR);
-        const results: { file: string; matches: string[] }[] = [];
-        
-        // Search daily memories
-        for (const file of files) {
-          if (!file.endsWith('.md')) continue;
-          const content = await fs.readFile(path.join(MEMORY_DIR, file), 'utf-8');
-          const lines = content.split('\n').filter(line => 
-            line.toLowerCase().includes(query.toLowerCase())
-          );
-          if (lines.length > 0) {
-            results.push({ file, matches: lines });
-          }
-        }
-        
-        return NextResponse.json(results);
-      }
-      
+        piUrl = `${PI_API_URL}/api/memory/search?q=${encodeURIComponent(query)}`;
+        break;
       default:
         return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
+    
+    const response = await fetch(piUrl, {
+      signal: AbortSignal.timeout(10000),
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Pi API error: ${response.status}`);
+    }
+    
+    const result = await response.json();
+    
+    // Normalize response format
+    if (action === 'longterm') {
+      return NextResponse.json({ content: result.data });
+    }
+    
+    return NextResponse.json(result.data || []);
   } catch (error: any) {
-    console.error('Memory API error:', error);
+    console.error('Memory API error:', error.message);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
