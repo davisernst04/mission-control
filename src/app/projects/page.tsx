@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { ExternalLink, GitBranch, Github, MoreVertical, Globe, X, ChevronDown, ChevronUp, Sparkles, Loader2 } from 'lucide-react';
 import { openClawAction } from '@/lib/openclaw';
+import { piClient } from '@/lib/api';
 
 export interface Project {
   id: string;
@@ -121,26 +122,39 @@ export default function ProjectsPage() {
     
     setIsCreating(true);
     
-    const createdProject: Project = {
-      id: newProject.name.toLowerCase().replace(/\s+/g, '-'),
-      name: newProject.name,
-      status: 'In Progress',
-      priority: newProject.priority,
-      url: newProject.url || `https://github.com/davisernst04/${newProject.name.toLowerCase().replace(/\s+/g, '-')}`,
-      lastUpdated: new Date().toISOString().split('T')[0],
-    };
+    try {
+      // Call the API to create the project and optionally spawn a subagent
+      const result = await piClient.request('/projects', {
+        name: newProject.name,
+        url: newProject.url,
+        priority: newProject.priority,
+        prompt: newProject.prompt,
+      }, 'POST');
 
-    // If there's a prompt, we'll just note that it would spawn a subagent
-    // The actual subagent spawning would be handled by the backend/API
-    if (newProject.prompt.trim()) {
-      console.log('Would spawn subagent with prompt:', newProject.prompt);
-      // TODO: Implement subagent spawning via API endpoint
+      // The API returns the created project
+      const createdProject: Project = {
+        id: result.id,
+        name: result.name,
+        status: 'In Progress',
+        priority: result.priority,
+        url: result.url,
+        lastUpdated: result.lastUpdated,
+      };
+
+      // If a subagent was spawned, log it
+      if (result.subagent?.spawned) {
+        console.log('Subagent spawned:', result.subagent.message);
+      }
+
+      setProjects(prev => [...prev, createdProject]);
+      setNewProject({ name: '', url: '', priority: 'Medium', prompt: '' });
+      setShowNewProjectModal(false);
+    } catch (error: any) {
+      console.error('Failed to create project:', error.message);
+      alert(`Failed to create project: ${error.message}`);
+    } finally {
+      setIsCreating(false);
     }
-
-    setProjects(prev => [...prev, createdProject]);
-    setNewProject({ name: '', url: '', priority: 'Medium', prompt: '' });
-    setShowNewProjectModal(false);
-    setIsCreating(false);
   };
 
   if (loading) {
