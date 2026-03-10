@@ -25,14 +25,14 @@ import { format,
 
 const priorityColors = {
   High: 'bg-red-500 text-red-100',
-  Medium: 'bg-amber-500 text-amber-100',
+  Medium: 'bg-blue-500 text-blue-100',
   Low: 'bg-blue-500 text-blue-100',
 };
 
 const statusColors = {
   Backlog: 'from-zinc-600 to-zinc-700',
   'In Progress': 'from-blue-600 to-blue-700',
-  'In Review': 'from-amber-600 to-amber-700',
+  'In Review': 'from-blue-600 to-blue-700',
   Done: 'from-emerald-600 to-emerald-700',
 };
 
@@ -144,7 +144,7 @@ function UpcomingTasks({ tasks }: { tasks: Task[] }) {
           >
             <div className={`w-1 h-1 rounded-full mt-1.5 flex-shrink-0 ${
               task.status === 'Done' ? 'bg-emerald-500' :
-              task.status === 'In Review' ? 'bg-amber-500' :
+              task.status === 'In Review' ? 'bg-blue-500' :
               task.status === 'In Progress' ? 'bg-blue-500' :
               'bg-zinc-500'
             }`} />

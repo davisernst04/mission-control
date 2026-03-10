@@ -210,7 +210,7 @@ export default function ProjectsPage() {
                 <div className={`w-2 h-2 rounded-full ${
                   project.status === 'In Progress' ? 'bg-blue-500' : 
                   project.status === 'Stable' ? 'bg-green-500' : 
-                  project.status === 'Active External' ? 'bg-purple-500' : 'bg-yellow-500'
+                  project.status === 'Active External' ? 'bg-purple-500' : 'bg-blue-500'
                 }`} />
                 {project.status}
               </div>
@@ -342,7 +342,7 @@ export default function ProjectsPage() {
                               ? opt === 'In Progress' ? 'bg-blue-500/20 text-blue-500' 
                                 : opt === 'Stable' ? 'bg-green-500/20 text-green-500'
                                 : opt === 'Active External' ? 'bg-purple-500/20 text-purple-500'
-                                : 'bg-yellow-500/20 text-yellow-500'
+                                : 'bg-blue-500/20 text-blue-500'
                               : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
                           }`}
                         >
@@ -355,7 +355,7 @@ export default function ProjectsPage() {
                       <div className={`w-2 h-2 rounded-full ${
                         selectedProject.status === 'In Progress' ? 'bg-blue-500' : 
                         selectedProject.status === 'Stable' ? 'bg-green-500' : 
-                        selectedProject.status === 'Active External' ? 'bg-purple-500' : 'bg-yellow-500'
+                        selectedProject.status === 'Active External' ? 'bg-purple-500' : 'bg-blue-500'
                       }`} />
                       <p 
                         className="text-zinc-300 cursor-pointer hover:opacity-80"

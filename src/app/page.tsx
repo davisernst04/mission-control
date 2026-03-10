@@ -25,9 +25,9 @@ export default async function Home() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { label: 'Active Agents', value: systemStatus.activeAgents.toString(), icon: Bot, color: '#F59E0B', trend: 'Online' },
-          { label: 'Sessions', value: systemStatus.totalSessions.toString(), icon: Cpu, color: '#F59E0B', trend: 'Stable' },
-          { label: 'System Status', value: systemStatus.gatewayStatus, icon: Activity, color: '#FBBF24', trend: 'Pulse High' },
+          { label: 'Active Agents', value: systemStatus.activeAgents.toString(), icon: Bot, color: '#3B82F6', trend: 'Online' },
+          { label: 'Sessions', value: systemStatus.totalSessions.toString(), icon: Cpu, color: '#3B82F6', trend: 'Stable' },
+          { label: 'System Status', value: systemStatus.gatewayStatus, icon: Activity, color: '#3B82F6', trend: 'Pulse High' },
           { label: 'OS Platform', value: 'Linux', icon: ShieldCheck, color: '#A8A29E', trend: 'Verified' },
         ].map((stat, i) => (
           <div 
@@ -92,7 +92,7 @@ export default async function Home() {
               className="text-xl font-semibold flex items-center gap-2"
               style={{ color: 'var(--foreground)' }}
             >
-              <TrendingUp className="w-5 h-5" style={{ color: '#FBBF24' }} />
+              <TrendingUp className="w-5 h-5" style={{ color: '#3B82F6' }} />
               Career Velocity
             </h2>
             <div 
@@ -129,7 +129,7 @@ export default async function Home() {
             >
               <div className="flex gap-2">
                 <span style={{ color: 'var(--border)' }}>[07:00:01]</span>
-                <span style={{ color: '#FBBF24' }}>INFO</span>
+                <span style={{ color: '#3B82F6' }}>INFO</span>
                 <span>Morning briefing complete. Objectives set.</span>
               </div>
               <div className="flex gap-2" style={{ color: 'var(--muted-foreground)' }}>
@@ -139,7 +139,7 @@ export default async function Home() {
               </div>
               <div className="flex gap-2">
                 <span style={{ color: 'var(--border)' }}>[12:44:12]</span>
-                <span style={{ color: '#FBBF24' }}>GATEWAY</span>
+                <span style={{ color: '#3B82F6' }}>GATEWAY</span>
                 <span>Gateway reachable at http://127.0.0.1:3002</span>
               </div>
               <div className="pt-2 animate-pulse">

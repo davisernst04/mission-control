@@ -43,7 +43,7 @@ export default function MemoryEntryPage() {
     return (
       <div className="h-screen bg-[#1C1917] text-stone-100 p-6 flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-amber-500/30 border-t-amber-500 rounded-full animate-spin" />
+          <div className="w-12 h-12 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin" />
           <p className="text-stone-400">Loading memory...</p>
         </div>
       </div>
@@ -56,7 +56,7 @@ export default function MemoryEntryPage() {
         <div className="flex items-center gap-4 mb-6">
           <button
             onClick={() => router.push('/memory')}
-            className="p-2 rounded-lg bg-[#292524] border border-[#44403C] hover:border-amber-500 transition-colors"
+            className="p-2 rounded-lg bg-[#292524] border border-[#44403C] hover:border-blue-500 transition-colors"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -74,14 +74,14 @@ export default function MemoryEntryPage() {
       <div className="flex items-center gap-4 mb-6">
         <button
           onClick={() => router.push('/memory')}
-          className="p-2 rounded-lg bg-[#292524] border border-[#44403C] hover:border-amber-500 transition-colors flex items-center gap-2"
+          className="p-2 rounded-lg bg-[#292524] border border-[#44403C] hover:border-blue-500 transition-colors flex items-center gap-2"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
           <span>Back</span>
         </button>
-        <h1 className="text-xl font-bold text-amber-400">{memory.date}</h1>
+        <h1 className="text-xl font-bold text-blue-400">{memory.date}</h1>
       </div>
 
       <div className="p-6 rounded-xl bg-[#292524] border border-[#44403C]">

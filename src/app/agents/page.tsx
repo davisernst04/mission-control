@@ -93,7 +93,7 @@ export default function AgentsPage() {
       case 'running':
         return 'bg-green-500';
       case 'busy':
-        return 'bg-amber-500';
+        return 'bg-blue-500';
       case 'completed':
         return 'bg-blue-500';
       case 'failed':
@@ -109,7 +109,7 @@ export default function AgentsPage() {
       case 'running':
         return 'bg-green-500/10 border-green-500/20 text-green-400';
       case 'busy':
-        return 'bg-amber-500/10 border-amber-500/20 text-amber-400';
+        return 'bg-blue-500/10 border-blue-500/20 text-blue-400';
       case 'completed':
         return 'bg-blue-500/10 border-blue-500/20 text-blue-400';
       case 'failed':
@@ -223,7 +223,7 @@ export default function AgentsPage() {
             {/* Sessions */}
             <div className="p-4 rounded-xl bg-zinc-950/50 border border-zinc-800">
               <div className="flex items-center gap-2 text-zinc-500 text-xs mb-2">
-                <Zap className="w-3 h-3 text-amber-500" />
+                <Zap className="w-3 h-3 text-blue-500" />
                 Subagents
               </div>
               <div className="text-sm font-medium text-white">{subagents.length} active</div>

@@ -17,13 +17,13 @@ import { format, formatDistanceToNow } from 'date-fns';
 const columns: { title: string; status: TaskStatus; color: string }[] = [
   { title: 'Backlog', status: 'Backlog', color: 'bg-zinc-500' },
   { title: 'In Progress', status: 'In Progress', color: 'bg-blue-500' },
-  { title: 'In Review', status: 'In Review', color: 'bg-amber-500' },
+  { title: 'In Review', status: 'In Review', color: 'bg-blue-500' },
   { title: 'Done', status: 'Done', color: 'bg-emerald-500' },
 ];
 
 const priorityColors = {
   High: 'bg-red-500/10 text-red-500 border-red-500/20',
-  Medium: 'bg-amber-500/10 text-amber-500 border-amber-500/20',
+  Medium: 'bg-blue-500/10 text-blue-500 border-blue-500/20',
   Low: 'bg-blue-500/10 text-blue-500 border-blue-500/20',
 };
 
@@ -105,7 +105,7 @@ function ActivityFeed({ activities }: { activities: ActivityItem[] }) {
                 <div className={`mt-0.5 p-1.5 rounded-md ${
                   activity.type === 'task_completed' ? 'bg-emerald-500/10 text-emerald-400' :
                   activity.type === 'task_created' ? 'bg-blue-500/10 text-blue-400' :
-                  activity.type === 'task_moved' ? 'bg-amber-500/10 text-amber-400' :
+                  activity.type === 'task_moved' ? 'bg-blue-500/10 text-blue-400' :
                   'bg-zinc-700/50 text-zinc-400'
                 }`}>
                   <Icon className="w-3 h-3" />

@@ -23,7 +23,7 @@ export default async function CareerPage() {
       </div>
 
       {careerData.error && (
-        <div className="p-4 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm">
+        <div className="p-4 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm">
           {careerData.error}
         </div>
       )}
@@ -43,7 +43,7 @@ export default async function CareerPage() {
                 <div>
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="text-lg font-bold text-white">{job.name}</h3>
-                    {job.isStar && <Star className="w-4 h-4 text-amber-500 fill-amber-500" />}
+                    {job.isStar && <Star className="w-4 h-4 text-blue-500 fill-blue-500" />}
                     <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-md bg-zinc-800 text-zinc-400 uppercase tracking-wider">
                       {job.category}
                     </span>
@@ -55,7 +55,7 @@ export default async function CareerPage() {
                     </div>
                     <div className="flex items-center gap-1.5">
                       <div className={`w-1.5 h-1.5 rounded-full ${
-                        job.status === 'Open' ? 'bg-green-500' : job.status === 'Likely Open' ? 'bg-amber-500' : 'bg-red-500'
+                        job.status === 'Open' ? 'bg-green-500' : job.status === 'Likely Open' ? 'bg-blue-500' : 'bg-red-500'
                       }`} />
                       {job.status}
                     </div>

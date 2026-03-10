@@ -33,7 +33,7 @@ export default function Error({
         </p>
         <button
           onClick={() => reset()}
-          className="w-full px-4 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 font-medium transition-colors"
+          className="w-full px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 font-medium transition-colors"
         >
           Try again
         </button>

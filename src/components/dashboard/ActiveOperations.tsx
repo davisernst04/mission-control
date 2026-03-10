@@ -38,10 +38,10 @@ export default function ActiveOperations({ tasks }: ActiveOperationsProps) {
               className="w-2 h-2 rounded-full"
               style={{
                 backgroundColor: 
-                  task.status === 'In Progress' ? '#F59E0B' : 
-                  task.status === 'Review' ? '#A8A29E' : 
-                  task.status === 'Continuous' ? '#FBBF24' : 'var(--muted-foreground)',
-                boxShadow: task.status === 'In Progress' ? '0_0_8px_rgba(245,158,11,0.5)' : 'none'
+                  task.status === 'In Progress' ? '#3B82F6' : 
+                  task.status === 'Review' ? '#A3A3A3' : 
+                  task.status === 'Continuous' ? '#3B82F6' : 'var(--muted-foreground)',
+                boxShadow: task.status === 'In Progress' ? '0_0_8px_rgba(59,130,246,0.5)' : 'none'
               }}
             />
             <div>
