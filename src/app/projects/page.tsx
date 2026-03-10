@@ -250,7 +250,7 @@ export default function ProjectsPage() {
       {selectedProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div 
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-[#1E1E1E]/60 backdrop-blur-sm"
             onClick={() => setSelectedProject(null)}
           />
           <div className="relative w-full max-w-lg bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl">
@@ -394,7 +394,7 @@ export default function ProjectsPage() {
       {showNewProjectModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div 
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-[#1E1E1E]/60 backdrop-blur-sm"
             onClick={() => setShowNewProjectModal(false)}
           />
           <div className="relative w-full max-w-lg bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl">

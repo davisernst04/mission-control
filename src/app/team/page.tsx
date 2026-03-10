@@ -2,7 +2,7 @@
 
 export default function TeamPage() {
   return (
-    <div className="h-screen bg-black text-white p-6">
+    <div className="h-screen bg-[#1E1E1E] text-white p-6">
       <div className="mb-6 p-4 rounded-xl bg-blue-900/20 border border-blue-800">
         <p className="text-sm text-blue-400 font-medium">Mission Statement</p>
         <p className="text-lg font-semibold mt-1">Every task either gets you closer to the internship or proves you're ready for it.</p>
