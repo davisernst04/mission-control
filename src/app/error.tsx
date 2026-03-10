@@ -8,8 +8,8 @@ export default function Error({
   reset: () => void;
 }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#1C1917] text-stone-100">
-      <div className="max-w-md p-8 rounded-2xl bg-[#292524] border border-[#44403C]">
+    <div className="min-h-screen flex items-center justify-center bg-black text-white">
+      <div className="max-w-md p-8 rounded-2xl bg-[#1E1E1E] border border-[#3B3B3B]">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-full bg-red-900/30 flex items-center justify-center">
             <svg
@@ -28,7 +28,7 @@ export default function Error({
           </div>
           <h2 className="text-xl font-semibold">Something went wrong</h2>
         </div>
-        <p className="text-stone-400 mb-4">
+        <p className="text-gray-400 mb-4">
           {error.message || 'Failed to connect to the API. Please check your connection.'}
         </p>
         <button

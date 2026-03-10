@@ -2,10 +2,10 @@
 
 export default function DocsPage() {
   return (
-    <div className="h-screen bg-[#1C1917] text-stone-100 p-6">
+    <div className="h-screen bg-black text-white p-6">
       <h1 className="text-2xl font-bold mb-6">Documentation Hub</h1>
-      <div className="p-6 rounded-xl bg-[#292524] border border-[#44403C]">
-        <p className="text-stone-500">Search and browse documents...</p>
+      <div className="p-6 rounded-xl bg-[#1E1E1E] border border-[#3B3B3B]">
+        <p className="text-gray-500">Search and browse documents...</p>
       </div>
     </div>
   );
