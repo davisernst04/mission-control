@@ -19,29 +19,64 @@ export default function ActiveOperations({ tasks }: ActiveOperationsProps) {
   };
 
   return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 overflow-hidden divide-y divide-zinc-800">
+    <div 
+      className="rounded-xl border overflow-hidden"
+      style={{ 
+        backgroundColor: 'var(--card)', 
+        borderColor: 'var(--border)',
+      }}
+    >
       {tasks.map((task, i) => (
         <div 
           key={i} 
           onClick={() => handleTaskClick(task)}
-          className="p-4 hover:bg-zinc-800/20 transition-colors flex items-center justify-between group cursor-pointer"
+          className="p-4 hover:bg-[var(--muted)] transition-colors flex items-center justify-between group cursor-pointer"
+          style={{ borderBottom: i < tasks.length - 1 ? '1px solid var(--border)' : 'none' }}
         >
           <div className="flex items-center gap-4">
-            <div className={`w-2 h-2 rounded-full ${
-              task.status === 'In Progress' ? 'bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]' : 
-              task.status === 'Review' ? 'bg-amber-500' : 
-              task.status === 'Continuous' ? 'bg-green-500' : 'bg-zinc-600'
-            }`} />
+            <div 
+              className="w-2 h-2 rounded-full"
+              style={{
+                backgroundColor: 
+                  task.status === 'In Progress' ? '#CC7722' : 
+                  task.status === 'Review' ? '#D2B48C' : 
+                  task.status === 'Continuous' ? '#228B22' : 'var(--muted-foreground)',
+                boxShadow: task.status === 'In Progress' ? '0_0_8px_rgba(204,119,34,0.5)' : 'none'
+              }}
+            />
             <div>
-              <h4 className="text-sm font-medium text-white group-hover:text-blue-400 transition-colors">{task.title}</h4>
+              <h4 
+                className="text-sm font-medium group-hover:transition-colors"
+                style={{ color: 'var(--foreground)' }}
+              >
+                {task.title}
+              </h4>
               <div className="flex items-center gap-2 mt-1">
-                <span className="text-xs text-zinc-500 font-mono">{task.agent}</span>
-                <span className="text-[10px] text-zinc-700">•</span>
-                <span className="text-xs text-zinc-500">{task.priority} Priority</span>
+                <span 
+                  className="text-xs font-mono"
+                  style={{ color: 'var(--muted-foreground)' }}
+                >
+                  {task.agent}
+                </span>
+                <span 
+                  className="text-[10px]"
+                  style={{ color: 'var(--border)' }}
+                >
+                  •
+                </span>
+                <span 
+                  className="text-xs"
+                  style={{ color: 'var(--muted-foreground)' }}
+                >
+                  {task.priority} Priority
+                </span>
               </div>
             </div>
           </div>
-          <button className="opacity-0 group-hover:opacity-100 p-2 text-zinc-500 hover:text-white transition-all">
+          <button 
+            className="opacity-0 group-hover:opacity-100 p-2 transition-all"
+            style={{ color: 'var(--muted-foreground)' }}
+          >
             <ArrowUpRight className="w-4 h-4" />
           </button>
         </div>

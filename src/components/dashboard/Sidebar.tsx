@@ -47,17 +47,23 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 border-r border-zinc-800 bg-black/50 backdrop-blur-md flex flex-col h-full relative">
+    <aside 
+      className="w-64 border-r flex flex-col h-full relative"
+      style={{ 
+        backgroundColor: 'var(--card)', 
+        borderColor: 'var(--border)' 
+      }}
+    >
       <div className="p-6">
-        <h1 className="text-xl font-bold tracking-tighter text-white uppercase italic">
-          Open<span className="text-blue-500">Claw</span>
+        <h1 className="text-xl font-bold tracking-tighter uppercase italic" style={{ color: 'var(--foreground)' }}>
+          Open<span style={{ color: 'var(--primary)' }}>Claw</span>
         </h1>
-        <p className="text-xs text-zinc-500 mt-1 uppercase tracking-widest font-medium">Mission Control</p>
+        <p className="text-xs mt-1 uppercase tracking-widest font-medium" style={{ color: 'var(--muted-foreground)' }}>Mission Control</p>
       </div>
 
       <nav className="flex-1 px-4 space-y-1 overflow-y-auto">
         <div className="py-2">
-          <p className="px-3 text-[10px] font-bold text-zinc-600 uppercase tracking-widest mb-2">Navigation</p>
+          <p className="px-3 text-[10px] font-bold uppercase tracking-widest mb-2" style={{ color: 'var(--muted-foreground)' }}>Navigation</p>
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             const Icon = item.icon;
@@ -68,11 +74,19 @@ export default function Sidebar() {
                 className={cn(
                   'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors group mb-1',
                   isActive 
-                    ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' 
-                    : 'text-zinc-400 hover:text-white hover:bg-zinc-800/50 border border-transparent'
+                    ? 'border' 
+                    : 'border-transparent'
                 )}
+                style={{ 
+                  backgroundColor: isActive ? 'var(--primary)' + '20' : 'transparent',
+                  color: isActive ? 'var(--primary)' : 'var(--muted-foreground)',
+                  borderColor: isActive ? 'var(--primary)' + '40' : 'transparent'
+                }}
               >
-                <Icon className={cn('w-4 h-4 shrink-0', isActive ? 'text-blue-400' : 'text-zinc-500 group-hover:text-zinc-300')} />
+                <Icon 
+                  className={cn('w-4 h-4 shrink-0')} 
+                  style={{ color: isActive ? 'var(--primary)' : 'var(--muted-foreground)' }}
+                />
                 <span className="text-sm font-medium">{item.label}</span>
               </Link>
             );
@@ -80,12 +94,13 @@ export default function Sidebar() {
         </div>
       </nav>
 
-      <div className="p-4 border-t border-zinc-800">
+      <div className="p-4 border-t" style={{ borderColor: 'var(--border)' }}>
         <Link
           href="/settings"
           className={cn(
-            "flex items-center gap-3 px-3 py-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800/50 transition-colors",
+            "flex items-center gap-3 px-3 py-2 rounded-lg transition-colors",
           )}
+          style={{ color: 'var(--muted-foreground)' }}
         >
           <Settings className="w-4 h-4 shrink-0" />
           <span className="text-sm font-medium">Settings</span>
