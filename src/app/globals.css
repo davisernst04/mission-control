@@ -1,35 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  /* Original color scheme - Light mode */
-  --background-light: #ffffff;
-  --foreground-light: #0a0a0f;
-  --card-light: #f5f5f5;
-  --card-foreground-light: #0a0a0f;
-  --primary-light: #3b82f6;
-  --primary-foreground-light: #ffffff;
-  --secondary-light: #e5e5e5;
-  --secondary-foreground-light: #0a0a0f;
-  --accent-light: #10b981;
-  --accent-foreground-light: #ffffff;
-  --muted-light: #f5f5f5;
-  --muted-foreground-light: #737373;
-  --border-light: #e5e5e5;
+  /* Claude.ai Light mode - Warm off-white/cream */
+  --background-light: #FAFAF9;
+  --foreground-light: #374151;
+  --card-light: #FFFFFF;
+  --card-foreground-light: #374151;
+  --primary-light: #F59E0B;
+  --primary-foreground-light: #FFFFFF;
+  --secondary-light: #F5F5F4;
+  --secondary-foreground-light: #374151;
+  --accent-light: #F59E0B;
+  --accent-foreground-light: #FFFFFF;
+  --muted-light: #F5F5F4;
+  --muted-foreground-light: #78716C;
+  --border-light: #E7E5E4;
   
-  /* Original color scheme - Dark mode */
-  --background-dark: #0a0a0f;
-  --foreground-dark: #fafafa;
-  --card-dark: #18181b;
-  --card-foreground-dark: #fafafa;
-  --primary-dark: #3b82f6;
-  --primary-foreground-dark: #ffffff;
-  --secondary-dark: #27272a;
-  --secondary-foreground-dark: #fafafa;
-  --accent-dark: #10b981;
-  --accent-foreground-dark: #ffffff;
-  --muted-dark: #27272a;
-  --muted-foreground-dark: #a3a3a3;
-  --border-dark: #27272a;
+  /* Claude.ai Dark mode - Warm dark */
+  --background-dark: #1C1917;
+  --foreground-dark: #FAFAFA;
+  --card-dark: #292524;
+  --card-foreground-dark: #FAFAFA;
+  --primary-dark: #FBBF24;
+  --primary-foreground-dark: #1C1917;
+  --secondary-dark: #292524;
+  --secondary-foreground-dark: #FAFAFA;
+  --accent-dark: #FBBF24;
+  --accent-foreground-dark: #1C1917;
+  --muted-dark: #292524;
+  --muted-foreground-dark: #A8A29E;
+  --border-dark: #44403C;
   
   /* Current theme (defaults to dark) */
   --background: var(--background-dark);
@@ -93,7 +93,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom Scrollbar - Original theme */
+/* Custom Scrollbar - Claude.ai warm theme */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -103,12 +103,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #404040;
+  background: #57534E;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #525252;
+  background: #78716C;
 }
 
 @keyframes pulse-soft {

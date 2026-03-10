@@ -60,17 +60,17 @@ export default function MemoryPage() {
 
   if (loading) {
     return (
-      <div className="h-screen bg-[#0a0a0f] text-gray-100 p-6 flex items-center justify-center">
+      <div className="h-screen bg-[#1C1917] text-stone-100 p-6 flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin" />
-          <p className="text-gray-400">Loading memories...</p>
+          <div className="w-12 h-12 border-4 border-amber-500/30 border-t-amber-500 rounded-full animate-spin" />
+          <p className="text-stone-400">Loading memories...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="h-screen bg-[#0a0a0f] text-gray-100 p-6 overflow-auto">
+    <div className="h-screen bg-[#1C1917] text-stone-100 p-6 overflow-auto">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold">Memory</h1>
         <div className="flex items-center gap-2">
