@@ -63,7 +63,7 @@ export default function MemoryPage() {
       <div className="h-screen bg-[#1E1E1E] text-white p-6 flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin" />
-          <p className="text-gray-400">Loading memories...</p>
+          <p className="text-zinc-400">Loading memories...</p>
         </div>
       </div>
     );
@@ -80,12 +80,12 @@ export default function MemoryPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-            className="px-4 py-2 bg-gray-900 border border-gray-800 rounded-lg text-sm focus:outline-none focus:border-emerald-500 w-64"
+            className="px-4 py-2 bg-zinc-950 border border-zinc-800 rounded-lg text-sm focus:outline-none focus:border-blue-500 w-64 text-white placeholder-zinc-500"
           />
           <button
             onClick={handleSearch}
             disabled={searching}
-            className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 rounded-lg text-sm font-medium transition-colors"
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 rounded-lg text-sm font-medium transition-colors text-white"
           >
             {searching ? 'Searching...' : 'Search'}
           </button>
@@ -94,13 +94,13 @@ export default function MemoryPage() {
 
       {/* Search Results */}
       {searchResults.length > 0 && (
-        <div className="mb-6 p-4 rounded-xl bg-gray-900 border border-gray-800">
-          <h2 className="text-lg font-semibold mb-3 text-emerald-400">Search Results ({searchResults.length})</h2>
+        <div className="mb-6 p-4 rounded-xl bg-zinc-900 border border-zinc-800">
+          <h2 className="text-lg font-semibold mb-3 text-blue-400">Search Results ({searchResults.length})</h2>
           {searchResults.map((result, idx) => (
-            <div key={idx} className="mb-3 pb-3 border-b border-gray-800 last:border-0">
-              <p className="text-sm font-medium text-gray-300 mb-1">{result.file}</p>
+            <div key={idx} className="mb-3 pb-3 border-b border-zinc-800 last:border-0">
+              <p className="text-sm font-medium text-zinc-300 mb-1">{result.file}</p>
               {result.matches.slice(0, 5).map((match, i) => (
-                <p key={i} className="text-sm text-gray-500 pl-3 border-l-2 border-emerald-500/30">
+                <p key={i} className="text-sm text-zinc-500 pl-3 border-l-2 border-blue-500/30">
                   {match}
                 </p>
               ))}
@@ -111,20 +111,20 @@ export default function MemoryPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Daily Journal */}
-        <div className="p-6 rounded-xl bg-gray-900 border border-gray-800">
-          <h2 className="text-lg font-semibold mb-4 text-emerald-400">Daily Journal</h2>
+        <div className="p-6 rounded-xl bg-zinc-900 border border-zinc-800">
+          <h2 className="text-lg font-semibold mb-4 text-blue-400">Daily Journal</h2>
           {dailyMemories.length === 0 ? (
-            <p className="text-gray-500">No daily memories found.</p>
+            <p className="text-zinc-500">No daily memories found.</p>
           ) : (
             <div className="space-y-4 max-h-[60vh] overflow-auto pr-2">
               {dailyMemories.map((memory) => (
                 <div 
                   key={memory.date} 
-                  className="p-4 rounded-lg bg-gray-950/50 border border-gray-800 hover:border-emerald-500 cursor-pointer transition-colors"
+                  className="p-4 rounded-lg bg-zinc-950/50 border border-zinc-800 hover:border-blue-500 cursor-pointer transition-colors"
                   onClick={() => router.push(`/memory/${memory.date}`)}
                 >
-                  <p className="text-xs text-emerald-500 font-medium mb-2">{memory.date}</p>
-                  <div className="text-sm text-gray-300 prose prose-invert prose-sm max-w-none line-clamp-6">
+                  <p className="text-xs text-blue-400 font-medium mb-2">{memory.date}</p>
+                  <div className="text-sm text-zinc-300 prose prose-invert prose-sm max-w-none line-clamp-6">
                     <ReactMarkdown>{memory.content}</ReactMarkdown>
                   </div>
                 </div>
@@ -134,13 +134,13 @@ export default function MemoryPage() {
         </div>
 
         {/* Long-Term Memory */}
-        <div className="p-6 rounded-xl bg-gray-900 border border-gray-800">
+        <div className="p-6 rounded-xl bg-zinc-900 border border-zinc-800">
           <h2 className="text-lg font-semibold mb-4 text-blue-400">Long-Term Memory</h2>
           {!longTermMemory ? (
-            <p className="text-gray-500">No long-term memory found.</p>
+            <p className="text-zinc-500">No long-term memory found.</p>
           ) : (
             <div className="max-h-[60vh] overflow-auto pr-2">
-              <div className="text-sm text-gray-300 prose prose-invert prose-sm max-w-none">
+              <div className="text-sm text-zinc-300 prose prose-invert prose-sm max-w-none">
                 <ReactMarkdown>{longTermMemory}</ReactMarkdown>
               </div>
             </div>

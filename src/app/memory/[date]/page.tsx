@@ -44,7 +44,7 @@ export default function MemoryEntryPage() {
       <div className="h-screen bg-[#1E1E1E] text-white p-6 flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin" />
-          <p className="text-gray-400">Loading memory...</p>
+          <p className="text-zinc-400">Loading memory...</p>
         </div>
       </div>
     );
@@ -56,7 +56,7 @@ export default function MemoryEntryPage() {
         <div className="flex items-center gap-4 mb-6">
           <button
             onClick={() => router.push('/memory')}
-            className="p-2 rounded-lg bg-[#1E1E1E] border border-[#3B3B3B] hover:border-blue-500 transition-colors"
+            className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-blue-500 transition-colors"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -64,7 +64,7 @@ export default function MemoryEntryPage() {
           </button>
           <h1 className="text-xl font-bold">Error</h1>
         </div>
-        <p className="text-gray-400">{error || 'Memory not found'}</p>
+        <p className="text-zinc-400">{error || 'Memory not found'}</p>
       </div>
     );
   }
@@ -74,7 +74,7 @@ export default function MemoryEntryPage() {
       <div className="flex items-center gap-4 mb-6">
         <button
           onClick={() => router.push('/memory')}
-          className="p-2 rounded-lg bg-[#1E1E1E] border border-[#3B3B3B] hover:border-blue-500 transition-colors flex items-center gap-2"
+          className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-blue-500 transition-colors flex items-center gap-2"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -84,7 +84,7 @@ export default function MemoryEntryPage() {
         <h1 className="text-xl font-bold text-blue-400">{memory.date}</h1>
       </div>
 
-      <div className="p-6 rounded-xl bg-[#1E1E1E] border border-[#3B3B3B]">
+      <div className="p-6 rounded-xl bg-zinc-900 border border-zinc-800">
         <div className="prose prose-invert max-w-none">
           <ReactMarkdown>{memory.content}</ReactMarkdown>
         </div>
